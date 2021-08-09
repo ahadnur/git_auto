@@ -62,6 +62,8 @@ def add_to_git(filename):
     commit_command = "git commit -m 'new file updated{}, timestamp:{}'".format(filename, utc_timestamp)
     os.system(commit_command)
     print("All set. Push It to the git repo with git push")
+    push_command = "git push origin master"
+    os.system(push_command)
         
 
 
