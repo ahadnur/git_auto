@@ -37,6 +37,21 @@ def login(AccessToken):
         print(e)
 
 
+def get_filename(filename):
+    files = os.listdir("./build")
+    if len(files) != 0:
+        for i in files:
+            if i.startswith('d'):
+                print("Deleting old files...")
+                delete_file = f"cd build; rm -rf {i}"
+                os.system(delete_file)
+                ""
+                print("Completely delete old files...")
+                zip(fileName)
+            else:
+                break
+    else:
+        zip(filename)
 
 
 
@@ -45,6 +60,7 @@ def add_to_git(filename):
     add_command = "git add ."
     os.system(add_command)
     commit_command = "git commit -m 'new file updated{}'".format(filename)
+    os.system(commit_command)
     print("All set. Push It to the git repo with git push")
         
 
@@ -59,8 +75,8 @@ if __name__ == '__main__':
     login(accessToken)
 
     filename = fileName
-    zip(filename)
     add_to_git(filename)
+    get_filename(filename)
     ending_time = time.time()
 
-    print("Program took {}s".format(round(ending_time-start_time, 3)))
+    print("Program took {}s".format(round(ending_time-start_time, 2)))
