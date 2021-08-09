@@ -37,7 +37,7 @@ def login(AccessToken):
         print(e)
 
 
-def get_filename(filename):
+def upload_new_file(filename):
     files = os.listdir("./build")
     if len(files) != 0:
         for i in files:
@@ -73,10 +73,10 @@ if __name__ == '__main__':
 
     accessToken = "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"
     login(accessToken)
-
+    print()
     filename = fileName
+    upload_new_file(filename)
     add_to_git(filename)
-    get_filename(filename)
     ending_time = time.time()
 
     print("Program took {}s".format(round(ending_time-start_time, 2)))
