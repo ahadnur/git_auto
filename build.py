@@ -21,7 +21,7 @@ def zip(filename):
     print("Making the zip file...")
     make_zip = f"zip -r {filename}.zip src"
     os.system(make_zip)
-    print("Completed zip creation.")
+    print("Completed zip creation.\n")
     move_zip = "mv {}.zip build".format(filename)
     os.system(move_zip)
 
@@ -46,7 +46,7 @@ def upload_new_file(filename):
                 delete_file = f"cd build; rm -rf {i}"
                 os.system(delete_file)
                 ""
-                print("Completely delete old files...")
+                print("Completely delete old files...\n")
                 zip(fileName)
             else:
                 break
@@ -59,7 +59,7 @@ def upload_new_file(filename):
 def add_to_git(filename):
     add_command = "git add ."
     os.system(add_command)
-    commit_command = "git commit -m 'new file updated{}'".format(filename)
+    commit_command = "git commit -m 'new file updated{}, timestamp:{}'".format(filename, utc_timestamp)
     os.system(commit_command)
     print("All set. Push It to the git repo with git push")
         
@@ -71,7 +71,7 @@ def add_to_git(filename):
 if __name__ == '__main__':
     start_time = time.time()
 
-    accessToken = "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"
+    accessToken = "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"
     login(accessToken)
     print()
     filename = fileName
